@@ -1,0 +1,16 @@
+- set_fact:
+    bash_profile: "{{ansible_env.HOME}}/.bash_profile"
+- stat: path="{{bash_profile}}"
+  register: bash_profile_stat
+- file: path="{{bash_profile}}" state=touch
+  when: not bash_profile_stat.stat.exists
+- lineinfile: >-
+    dest="{{bash_profile}}"
+    line="export HOMEBREW_CASK_OPTS=\"--{{cask_options|regex_replace(',', ' --')}}\""
+  when:
+    - cask_options is defined
+    - cask_options != ""
+- lineinfile: >-
+    dest="{{bash_profile}}"
+    line="[ -r $HOME/.bashrc ] && source $HOME/.bashrc"
+    insertafter=EOF

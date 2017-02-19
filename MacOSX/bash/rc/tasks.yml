@@ -1,0 +1,35 @@
+- set_fact:
+    bashrc: "{{ansible_env.HOME}}/.bashrc"
+- stat: path="{{bashrc}}"
+  register: bashrc_stat
+- name: create "{{bashrc}}"
+  file: path="{{bashrc}}" state=touch
+  when: not bashrc_stat.stat.exists
+
+- blockinfile: >-
+    block="{{lookup('file', 'extra.j2')}}"
+    dest="{{bashrc}}"
+    marker="# {mark} extra.j2"
+
+- command: which -s brew
+  register: which_brew
+  ignore_errors: True
+  changed_when: False
+- when:
+    - which_brew|succeeded
+  command: brew --prefix
+  register: brew_prefix
+  changed_when: False
+- when:
+    - which_brew|succeeded
+    - brew_prefix|succeeded
+  stat: path="{{brew_prefix.stdout}}/etc/bash_completion"
+  register: bash_completion_stat
+- when:
+    - which_brew|succeeded
+    - brew_prefix|succeeded
+    - bash_completion_stat.stat.exists
+  lineinfile: >-
+    dest="{{bashrc}}"
+    insertbefore=BOF
+    line="source {{bash_completion_stat.stat.path}}"

@@ -1,0 +1,39 @@
+cask_options: 'appdir=~/Applications'
+# state: absent | present | latest
+casks:
+  - name: 1password
+    state: present
+  - name: alfred
+    state: present
+  - name: appcleaner
+    state: absent
+  - name: atom
+    state: present
+  - name: docker
+    state: present
+  - name: dropbox
+    state: present
+  - name: evernote
+    state: present
+  - name: flux
+    state: present
+  - name: google-chrome
+    state: present
+  - name: google-drive
+    state: present
+  - name: google-japanese-ime
+    state: present
+  - name: iterm2
+    state: present
+  - name: java
+    state: absent
+  - name: pycharm
+    state: present
+  - name: sourcetree
+    state: present
+  - name: vagrant
+    state: absent
+  - name: virtualbox
+    state: absent
+  - name: vlc
+    state: absent

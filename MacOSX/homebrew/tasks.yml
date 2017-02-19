@@ -1,0 +1,5 @@
+- include_vars: vars.yml
+- name: update homebrew itself
+  homebrew: update_homebrew="{{update_homebrew}}"
+- include: formulae/tasks.yml
+- include: casks/tasks.yml

@@ -1,0 +1,8 @@
+- include_vars: vars.yml
+- name: install / uninstall formulae
+  homebrew: name="{{item.name}}" state="{{item.state}}"
+  with_items: "{{formulae}}"
+- name: remove tar.gz files
+  shell: brew cleanup
+  register: brew_cleanup
+  changed_when: brew_cleanup.stdout

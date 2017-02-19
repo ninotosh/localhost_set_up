@@ -1,0 +1,10 @@
+- include_vars: vars.yml
+- name: tap caskroom
+  homebrew_tap: name=caskroom/cask
+- name: install / uninstall casks
+  homebrew_cask: name="{{item.name}}" state="{{item.state}}" install_options="{{cask_options}}"
+  with_items: "{{casks}}"
+- name: remove dmg / zip files
+  shell: brew cask cleanup
+  register: brew_cask_cleanup
+  changed_when: "'Nothing to do' not in brew_cask_cleanup.stdout_lines"

@@ -1,0 +1,9 @@
+defaults:
+  - domain: NSGlobalDomain
+    key: KeyRepeat
+    type: int
+    value: 4
+  - domain: com.apple.screencapture
+    key: name
+    type: string
+    value: ''

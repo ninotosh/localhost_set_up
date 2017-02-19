@@ -1,0 +1,9 @@
+- include: "{{MacOSX_dir}}/tasks.yml"
+  with_items:
+    - disable_ipv6
+    - osx_defaults
+    - homebrew
+    - bash
+  loop_control:
+    loop_var: MacOSX_dir
+  when: "ansible_distribution == 'MacOSX'"

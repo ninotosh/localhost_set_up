@@ -1,0 +1,8 @@
+- hosts: localhost
+  tasks:
+    - stat: path="{{ansible_distribution}}"
+      register: ansible_distribution_stat
+      tags:
+        - always
+    - include: "{{ansible_distribution}}/tasks.yml"
+      when: ansible_distribution_stat.stat.exists

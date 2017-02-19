@@ -1,0 +1,11 @@
+- include_vars: vars.yml
+- name: networksetup -getinfo
+  with_items: "{{networks}}"
+  when: networks
+  command: networksetup -getinfo "{{item}}"
+  register: networksetup_getinfo
+  changed_when: False
+- name: disable IPv6
+  with_items: "{{networksetup_getinfo.results}}"
+  when: '"IPv6: Off" not in item.stdout_lines'
+  command: networksetup -setv6off "{{item.item}}"

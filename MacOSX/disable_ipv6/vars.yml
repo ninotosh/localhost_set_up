@@ -1,0 +1,3 @@
+networks:
+  # run `networksetup -listnetworkserviceorder` for names
+  - Wi-Fi
