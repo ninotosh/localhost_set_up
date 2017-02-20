@@ -3,5 +3,7 @@ update_homebrew: no
 formulae:
   - name: bash-completion
     state: present
+  - name: docker-completion
+    state: present
   - name: ffmpeg
     state: absent
