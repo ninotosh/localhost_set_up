@@ -1,4 +1,4 @@
-cask_options: 'appdir=~/Applications'
+cask_options: 'appdir=$HOME/Applications'
 # state: absent | present | latest
 casks:
   - name: 1password
