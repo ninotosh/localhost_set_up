@@ -1,5 +1,4 @@
-update_homebrew: no
-# state is either present, latest, or absent
+# state: absent | present | latest
 formulae:
   - name: bash-completion
     state: present
