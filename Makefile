@@ -66,11 +66,15 @@ uninstall_brew: ruby_exists curl_exists
 	ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 
 TEMP_PRESENT := $(shell mktemp)
-TEMP_UNINSTALLED := $(shell mktemp)
+TEMP_UNINSTALLABLE := $(shell mktemp)
 FORMULAE_VARS := MacOSX/homebrew/formulae/vars.yml
 .PHONY: clear_formulae
-clear_formulae: install_brew
-	@ruby -ryaml -e 'puts YAML.load_file("$(FORMULAE_VARS)")["formulae"].map{|f| puts f["name"] if ["present", "latest"].include?(f["state"])}.compact' > $(TEMP_PRESENT)
-	@brew list | grep -v -f $(TEMP_PRESENT) > $(TEMP_UNINSTALLED); true
-	@test -s $(TEMP_UNINSTALLED) && brew uninstall `cat $(TEMP_UNINSTALLED)`; true
-	@rm $(TEMP_PRESENT) $(TEMP_UNINSTALLED)
+clear_formulae: ruby_exists install_brew
+	@/usr/bin/ruby -ryaml -e 'puts YAML.load_file("$(FORMULAE_VARS)")["formulae"].map{|f| puts f["name"] if ["present", "latest"].include?(f["state"])}.compact' > $(TEMP_PRESENT)
+	@brew list | grep -v -f $(TEMP_PRESENT) > $(TEMP_UNINSTALLABLE); true
+	@for i in `cat $(TEMP_UNINSTALLABLE)`; do \
+		for f in `brew list | grep -v -f $(TEMP_PRESENT)`; do \
+			brew list --versions $$f > /dev/null && brew uninstall $$f 2> /dev/null; \
+		done \
+	done
+	@rm $(TEMP_PRESENT) $(TEMP_UNINSTALLABLE)
