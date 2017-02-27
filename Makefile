@@ -54,7 +54,7 @@ generate_MacOSX_homebrew_formulae_vars_yml:
 .PHONY: generate_MacOSX_homebrew_casks_vars_yml
 generate_MacOSX_homebrew_casks_vars_yml:
 	@echo "cask_options: 'appdir=\$$HOME/Applications'"
-	@echo '# state: absent | present | latest'
+	@echo '# state: absent | present'
 	@echo 'casks:'
 	@for f in `brew cask list`; do echo "  - name: $$f"; echo "    state: present"; done
 

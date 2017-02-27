@@ -1,5 +1,5 @@
 cask_options: 'appdir=$HOME/Applications'
-# state: absent | present | latest
+# state: absent | present
 casks:
   - name: 1password
     state: present
