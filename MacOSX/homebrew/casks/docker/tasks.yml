@@ -1,0 +1,9 @@
+- name: create .docker directory
+  when: docker_state is defined and docker_state == 'present'
+  file: path="{{ansible_env.HOME}}/.docker" state=directory
+- name: copy config.json to .docker/
+  when: docker_state is defined and docker_state == 'present'
+  copy: src="config.json" dest="{{ansible_env.HOME}}/.docker/config.json"
+- name: remove .docker/config.json
+  when: docker_state is defined and docker_state == 'absent'
+  file: path="{{ansible_env.HOME}}/.docker" state=absent
