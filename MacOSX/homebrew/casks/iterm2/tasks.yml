@@ -1,0 +1,16 @@
+- include_vars: vars.yml
+- name: install extra commands for iterm2
+  when: iterm2_state is defined and iterm2_state == 'present'
+  with_items: "{{iterm2_commands}}"
+  loop_control:
+    loop_var: iterm2_command
+  get_url: >-
+    url="{{iterm2_command.url}}"
+    dest="{{brew_prefix.stdout}}/bin/{{iterm2_command.name}}"
+    mode=0755
+- name: uninstall extra commands for iterm2
+  when: iterm2_state is defined and iterm2_state == 'absent'
+  with_items: "{{iterm2_commands}}"
+  loop_control:
+    loop_var: iterm2_command
+  file: path="{{brew_prefix.stdout}}/bin/{{iterm2_command.name}}" state=absent
