@@ -4,6 +4,25 @@
 - name: install / uninstall casks
   homebrew_cask: name="{{item.name}}" state="{{item.state}}" install_options="{{cask_options}}"
   with_items: "{{casks}}"
+- name: get the full path of this file itself
+  find: >-
+    paths="{{playbook_dir}}"
+    recurse=yes
+    patterns="tasks.yml"
+    contains=".* unique string ynhdcs7B .*"
+  register: casks_task_find
+- name: check if tasks for each cask exist
+  with_items: "{{casks}}"
+  stat: path="{{casks_task_find.files[0].path | regex_replace('tasks.yml', item.name + '/tasks.yml')}}"
+  register: individual_task_stat
+- name: set cask states to variables for easy access
+  with_items: "{{casks}}"
+  set_fact:
+    "{{item.name | regex_replace('-', '_') | regex_replace('^(\\d)', '_\\1') }}_state": "{{item.state}}"
+- name: run tasks for each cask
+  with_items: "{{individual_task_stat.results}}"
+  when: item.stat.exists
+  include: "{{item.invocation.module_args.path}}"
 - name: remove dmg / zip files
   shell: brew cask cleanup
   register: brew_cask_cleanup

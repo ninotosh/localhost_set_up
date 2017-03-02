@@ -1,4 +1,8 @@
 - include_vars: vars.yml
+- name: set brew_prefix
+  shell: brew --prefix
+  register: brew_prefix
+  changed_when: False
 - name: update homebrew itself
   homebrew: update_homebrew="{{update_homebrew}}"
 - include: formulae/tasks.yml
