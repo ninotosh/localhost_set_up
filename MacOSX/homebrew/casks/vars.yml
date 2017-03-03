@@ -3,6 +3,7 @@ cask_options: 'appdir=$HOME/Applications'
 casks:
   - name: 1password
     state: present
+    cask_options: 'appdir=/Applications'
   - name: alfred
     state: present
   - name: appcleaner

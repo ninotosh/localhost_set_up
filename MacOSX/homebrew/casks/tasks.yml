@@ -2,7 +2,10 @@
 - name: tap caskroom
   homebrew_tap: name=caskroom/cask
 - name: install / uninstall casks
-  homebrew_cask: name="{{item.name}}" state="{{item.state}}" install_options="{{cask_options}}"
+  homebrew_cask: >-
+    name="{{item.name}}"
+    state="{{item.state}}"
+    install_options="{{item.cask_options | default(cask_options)}}"
   with_items: "{{casks}}"
 - name: get the full path of this file itself
   find: >-
