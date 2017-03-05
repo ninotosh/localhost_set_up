@@ -10,6 +10,8 @@ casks:
     state: absent
   - name: atom
     state: present
+  - name: avg-antivirus
+    state: present
   - name: docker
     state: present
   - name: dropbox
