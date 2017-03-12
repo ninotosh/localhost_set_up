@@ -6,3 +6,7 @@ formulae:
     state: present
   - name: ffmpeg
     state: absent
+  - name: go
+    state: absent
+  - name: vagrant-completion
+    state: absent

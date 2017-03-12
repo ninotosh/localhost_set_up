@@ -12,6 +12,8 @@ casks:
     state: present
   - name: avg-antivirus
     state: present
+  - name: caffeine
+    state: absent
   - name: docker
     state: present
   - name: dropbox
