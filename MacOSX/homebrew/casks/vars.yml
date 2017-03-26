@@ -1,5 +1,6 @@
 cask_options: 'appdir=$HOME/Applications'
 # state: absent | present
+# put "casks: []" to do nothing
 casks:
   - name: 1password
     state: present
