@@ -1,6 +1,6 @@
 - include_vars: vars.yml
 - name: tap caskroom
-  homebrew_tap: name=caskroom/cask
+  homebrew_tap: name=homebrew/cask
 - name: install / uninstall casks
   homebrew_cask: >-
     name="{{item.name}}"
