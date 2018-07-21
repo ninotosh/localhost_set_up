@@ -33,6 +33,8 @@ casks:
     state: present
   - name: java
     state: absent
+  - name: kindle
+    state: absent
   - name: pycharm
     state: present
   - name: sourcetree
