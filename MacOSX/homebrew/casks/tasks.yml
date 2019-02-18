@@ -26,7 +26,3 @@
   with_items: "{{individual_task_stat.results}}"
   when: item.stat.exists
   include: "{{item.invocation.module_args.path}}"
-- name: remove dmg / zip files
-  shell: brew cask cleanup
-  register: brew_cask_cleanup
-  changed_when: "'Nothing to do' not in brew_cask_cleanup.stdout_lines"

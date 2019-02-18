@@ -42,7 +42,6 @@ play:
 
 .PHONY: clean_cache
 clean_cache: install_brew
-	-brew cask cleanup
 	-brew cleanup
 
 .PHONY: generate_MacOSX_homebrew_formulae_vars_yml
