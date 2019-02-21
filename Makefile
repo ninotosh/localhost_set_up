@@ -75,7 +75,7 @@ clear_formulae: ruby_exists install_brew
 	@brew list | grep -v -f $(TEMP_PRESENT) > $(TEMP_UNINSTALLABLE); true
 	@for i in `cat $(TEMP_UNINSTALLABLE)`; do \
 		for f in `brew list | grep -v -f $(TEMP_PRESENT)`; do \
-			brew list --versions $$f > /dev/null && brew uninstall $$f 2> /dev/null; \
+			brew list --versions $$f > /dev/null && brew uninstall $$f 2> /dev/null || true; \
 		done \
 	done
 	@rm $(TEMP_PRESENT) $(TEMP_UNINSTALLABLE)
