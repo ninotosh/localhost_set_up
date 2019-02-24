@@ -31,10 +31,8 @@ casks:
     state: present
   - name: iterm2
     state: present
-  - name: java
-    state: absent
   - name: kindle
-    state: absent
+    state: present
   - name: pycharm
     state: present
   - name: sourcetree
@@ -43,5 +41,9 @@ casks:
     state: absent
   - name: virtualbox
     state: absent
+  - name: visual-studio-code
+    state: absent
   - name: vlc
+    state: absent
+  - name: zoomus
     state: absent
