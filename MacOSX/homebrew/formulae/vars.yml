@@ -9,5 +9,7 @@ formulae:
     state: absent
   - name: go
     state: absent
+  - name: openvpn
+    state: present
   - name: vagrant-completion
     state: absent
