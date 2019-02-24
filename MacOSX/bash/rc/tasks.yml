@@ -16,18 +16,18 @@
   ignore_errors: True
   changed_when: False
 - when:
-    - which_brew|succeeded
+    - which_brew
   command: brew --prefix
   register: brew_prefix
   changed_when: False
 - when:
-    - which_brew|succeeded
-    - brew_prefix|succeeded
+    - which_brew
+    - brew_prefix
   stat: path="{{brew_prefix.stdout}}/etc/bash_completion"
   register: bash_completion_stat
 - when:
-    - which_brew|succeeded
-    - brew_prefix|succeeded
+    - which_brew
+    - brew_prefix
     - bash_completion_stat.stat.exists
   lineinfile: >-
     dest="{{bashrc}}"
