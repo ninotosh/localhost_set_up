@@ -23,9 +23,9 @@ casks:
     state: present
   - name: flux
     state: present
-  - name: google-chrome
+  - name: google-backup-and-sync
     state: present
-  - name: google-drive
+  - name: google-chrome
     state: present
   - name: google-japanese-ime
     state: present
