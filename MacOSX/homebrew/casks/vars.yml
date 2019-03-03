@@ -27,6 +27,7 @@ casks:
     state: present
   - name: google-chrome
     state: present
+    cask_options: 'appdir=/Applications'
   - name: google-japanese-ime
     state: present
   - name: iterm2
