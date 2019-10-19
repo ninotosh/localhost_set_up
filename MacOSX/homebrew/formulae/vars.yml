@@ -10,6 +10,6 @@ formulae:
   - name: go
     state: absent
   - name: openvpn
-    state: present
+    state: latest
   - name: vagrant-completion
     state: absent
