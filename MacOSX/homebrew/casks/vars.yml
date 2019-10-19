@@ -6,7 +6,7 @@ casks:
     state: present
     cask_options: 'appdir=/Applications'
   - name: alfred
-    state: present
+    state: absent
   - name: appcleaner
     state: absent
   - name: atom
@@ -22,7 +22,7 @@ casks:
   - name: evernote
     state: present
   - name: flux
-    state: present
+    state: absent
   - name: google-backup-and-sync
     state: present
   - name: google-chrome
