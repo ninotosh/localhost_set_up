@@ -34,15 +34,11 @@ install_ansible: install_brew
 	@brew list --versions ansible || (brew update && brew install ansible)
 
 .PHONY: run
-run: install play clean_cache clear_formulae
+run: play uninstall
 
 .PHONY: play
-play:
+play: install
 	ansible-playbook site.yml
-
-.PHONY: clean_cache
-clean_cache: install_brew
-	-brew cleanup
 
 .PHONY: generate_MacOSX_homebrew_formulae_vars_yml
 generate_MacOSX_homebrew_formulae_vars_yml:
@@ -59,16 +55,22 @@ generate_MacOSX_homebrew_casks_vars_yml:
 	@echo 'casks:'
 	@for f in `brew cask list`; do echo "  - name: $$f"; echo "    state: present"; done
 
-.PHONY: export_homebrew
-export_homebrew:
+.PHONY: uninstall
+uninstall: clean_cache clear_formulae
 
+# also removes installed packages
 .PHONY: uninstall_brew
 uninstall_brew: ruby_exists curl_exists
 	ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 
+.PHONY: clean_cache
+clean_cache: install_brew
+	-brew cleanup
+
 TEMP_PRESENT := $(shell mktemp)
 TEMP_UNINSTALLABLE := $(shell mktemp)
 FORMULAE_VARS := MacOSX/homebrew/formulae/vars.yml
+# this may remove packages needed by installed packages
 .PHONY: clear_formulae
 clear_formulae: ruby_exists install_brew
 	@/usr/bin/ruby -ryaml -e 'puts YAML.load_file("$(FORMULAE_VARS)")["formulae"].map{|f| puts f["name"] if ["present", "latest"].include?(f["state"])}.compact' > $(TEMP_PRESENT)
