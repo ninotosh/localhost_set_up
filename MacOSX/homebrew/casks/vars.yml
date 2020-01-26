@@ -12,7 +12,7 @@ casks:
   - name: atom
     state: present
   - name: avg-antivirus
-    state: present
+    state: absent
   - name: caffeine
     state: absent
   - name: docker
