@@ -1,6 +1,6 @@
 - include_vars: vars.yml
 - name: tap caskroom
-  homebrew_tap: name=homebrew/cask
+  homebrew_tap: name=Homebrew/homebrew-cask
 - name: install / uninstall casks
   homebrew_cask: >-
     name="{{item.name}}"
@@ -25,4 +25,4 @@
 - name: run tasks for each cask
   with_items: "{{individual_task_stat.results}}"
   when: item.stat.exists
-  include: "{{item.invocation.module_args.path}}"
+  include_tasks: "{{item.invocation.module_args.path}}"

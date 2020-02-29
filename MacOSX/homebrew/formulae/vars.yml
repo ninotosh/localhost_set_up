@@ -1,15 +1,15 @@
-# state: absent | present | latest
+# state: absent | present | upgraded
 # put "formulae: []" to do nothing
 formulae:
   - name: bash-completion
-    state: latest
+    state: upgraded
   - name: docker-completion
-    state: latest
+    state: upgraded
   - name: ffmpeg
     state: absent
   - name: go
     state: absent
   - name: openvpn
-    state: latest
+    state: upgraded
   - name: vagrant-completion
     state: absent
