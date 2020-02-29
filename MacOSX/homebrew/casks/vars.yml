@@ -1,43 +1,43 @@
 cask_options: 'appdir=$HOME/Applications'
-# state: absent | present
+# state: absent | present | upgraded
 # put "casks: []" to do nothing
 casks:
   - name: 1password
-    state: present
+    state: upgraded
     cask_options: 'appdir=/Applications'
   - name: alfred
     state: absent
   - name: appcleaner
     state: absent
   - name: atom
-    state: present
+    state: upgraded
   - name: avg-antivirus
     state: absent
   - name: caffeine
     state: absent
   - name: docker
-    state: present
+    state: upgraded
   - name: dropbox
-    state: present
+    state: upgraded
   - name: evernote
-    state: present
   - name: flux
     state: absent
+    state: upgraded
   - name: google-backup-and-sync
-    state: present
+    state: upgraded
   - name: google-chrome
-    state: present
+    state: upgraded
     cask_options: 'appdir=/Applications'
   - name: google-japanese-ime
-    state: present
+    state: upgraded
   - name: iterm2
-    state: present
+    state: upgraded
   - name: kindle
-    state: present
+    state: upgraded
   - name: pycharm
-    state: present
+    state: upgraded
   - name: sourcetree
-    state: present
+    state: upgraded
   - name: vagrant
     state: absent
   - name: virtualbox

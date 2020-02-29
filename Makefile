@@ -42,18 +42,18 @@ play: install
 
 .PHONY: generate_MacOSX_homebrew_formulae_vars_yml
 generate_MacOSX_homebrew_formulae_vars_yml:
-	@echo '# state: absent | present | latest'
+	@echo '# state: absent | present | upgraded'
 	@echo '# put "formulae: []" to do nothing'
 	@echo 'formulae:'
-	@for f in `brew list`; do echo "  - name: $$f"; echo "    state: present"; done
+	@for f in `brew list`; do echo "  - name: $$f"; echo "    state: upgraded"; done
 
 .PHONY: generate_MacOSX_homebrew_casks_vars_yml
 generate_MacOSX_homebrew_casks_vars_yml:
 	@echo "cask_options: 'appdir=\$$HOME/Applications'"
-	@echo '# state: absent | present'
+	@echo '# state: absent | present | upgraded'
 	@echo '# put "casks: []" to do nothing'
 	@echo 'casks:'
-	@for f in `brew cask list`; do echo "  - name: $$f"; echo "    state: present"; done
+	@for f in `brew cask list`; do echo "  - name: $$f"; echo "    state: upgraded"; done
 
 .PHONY: uninstall
 uninstall: clean_cache clear_formulae
@@ -73,7 +73,7 @@ FORMULAE_VARS := MacOSX/homebrew/formulae/vars.yml
 # this may remove packages needed by installed packages
 .PHONY: clear_formulae
 clear_formulae: ruby_exists install_brew
-	@/usr/bin/ruby -ryaml -e 'puts YAML.load_file("$(FORMULAE_VARS)")["formulae"].map{|f| puts f["name"] if ["present", "latest"].include?(f["state"])}.compact' > $(TEMP_PRESENT)
+	@/usr/bin/ruby -ryaml -e 'puts YAML.load_file("$(FORMULAE_VARS)")["formulae"].map{|f| puts f["name"] if ["present", "upgraded"].include?(f["state"])}.compact' > $(TEMP_PRESENT)
 	@brew list | grep -v -f $(TEMP_PRESENT) > $(TEMP_UNINSTALLABLE); true
 	@for i in `cat $(TEMP_UNINSTALLABLE)`; do \
 		for f in `brew list | grep -v -f $(TEMP_PRESENT)`; do \
