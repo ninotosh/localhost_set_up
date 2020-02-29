@@ -5,8 +5,6 @@ casks:
   - name: 1password
     state: upgraded
     cask_options: 'appdir=/Applications'
-  - name: alfred
-    state: absent
   - name: appcleaner
     state: absent
   - name: atom
@@ -20,8 +18,6 @@ casks:
   - name: dropbox
     state: upgraded
   - name: evernote
-  - name: flux
-    state: absent
     state: upgraded
   - name: google-backup-and-sync
     state: upgraded
@@ -33,6 +29,8 @@ casks:
   - name: iterm2
     state: upgraded
   - name: kindle
+    state: upgraded
+  - name: openvpn-connect
     state: upgraded
   - name: pycharm
     state: upgraded
