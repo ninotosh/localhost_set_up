@@ -3,7 +3,119 @@ defaults:
     key: KeyRepeat
     type: int
     value: 2
+  - domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: 15
+  - domain: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: bool
+    value: no
+  - domain: NSGlobalDomain
+    key: WebAutomaticSpellingCorrectionEnabled
+    type: bool
+    value: no
+  - domain: NSGlobalDomain
+    key: NSAutomaticCapitalizationEnabled
+    type: bool
+    value: no
+  - domain: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    type: bool
+    value: no
+  - domain: NSGlobalDomain
+    key: com.apple.mouse.scaling
+    type: float
+    value: 3
+  - domain: NSGlobalDomain
+    key: AppleEnableMouseSwipeNavigateWithScrolls
+    type: bool
+    value: yes
+  - domain: com.apple.driver.AppleBluetoothMultitouch.mouse
+    key: MouseButtonMode
+    type: string
+    value: TwoButton
+  - domain: com.apple.AppleMultitouchMouse
+    key: MouseButtonMode
+    type: string
+    value: TwoButton
+  - domain: com.apple.driver.AppleBluetoothMultitouch.mouse
+    key: MouseOneFingerDoubleTapGesture
+    type: int
+    value: 1
+  - domain: com.apple.AppleMultitouchMouse
+    key: MouseOneFingerDoubleTapGesture
+    type: int
+    value: 1
+  - domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: bool
+    value: yes
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: bool
+    value: yes
+  - domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadThreeFingerDrag
+    type: bool
+    value: yes
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadThreeFingerDrag
+    type: bool
+    value: yes
+  - domain: NSGlobalDomain
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 3
   - domain: com.apple.screencapture
     key: name
     type: string
     value: ''
+  - domain: com.apple.screencapture
+    key: location
+    type: string
+    value: '/tmp'
+  - domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: bool
+    value: yes
+  - domain: com.apple.finder
+    key: AppleShowAllExtensions
+    type: bool
+    value: yes
+  - domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    type: bool
+    value: yes
+  - domain: com.apple.finder
+    key: ShowRecentTags
+    type: bool
+    value: no
+  - domain: com.apple.finder
+    key: FXRemoveOldTrashItems
+    type: bool
+    value: yes
+  - domain: com.apple.menuextra.battery
+    key: ShowPercent
+    type: string
+    value: 'YES'
+  - domain: com.apple.menuextra.clock
+    key: DateFormat
+    type: string
+    value: 'EEE M d  H:mm'
+  - domain: com.apple.dock
+    key: magnification
+    type: bool
+    value: yes
+  - domain: com.apple.dock
+    key: largesize
+    type: float
+    value: 96
+  - domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: yes
+  - domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: no

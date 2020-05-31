@@ -1,16 +1,12 @@
-cask_options: 'appdir=$HOME/Applications'
 # state: absent | present | upgraded
 # put "casks: []" to do nothing
 casks:
   - name: 1password
     state: upgraded
-    cask_options: 'appdir=/Applications'
   - name: appcleaner
     state: absent
   - name: atom
     state: upgraded
-  - name: avg-antivirus
-    state: absent
   - name: caffeine
     state: absent
   - name: docker
@@ -23,7 +19,6 @@ casks:
     state: upgraded
   - name: google-chrome
     state: upgraded
-    cask_options: 'appdir=/Applications'
   - name: google-japanese-ime
     state: upgraded
   - name: iterm2
@@ -31,7 +26,7 @@ casks:
   - name: kindle
     state: upgraded
   - name: openvpn-connect
-    state: upgraded
+    state: absent
   - name: pycharm
     state: upgraded
   - name: sourcetree
