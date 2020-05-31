@@ -26,8 +26,8 @@ curl_exists:
 	@if [ -z `which curl` ]; then echo curl not installed; false; fi
 
 .PHONY: install_brew
-install_brew: ruby_exists curl_exists
-	@which brew || /usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+install_brew: curl_exists
+	@which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 .PHONY: install_ansible
 install_ansible: install_brew
@@ -60,8 +60,8 @@ uninstall: clean_cache clear_formulae
 
 # also removes installed packages
 .PHONY: uninstall_brew
-uninstall_brew: ruby_exists curl_exists
-	ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+uninstall_brew: curl_exists
+	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
 
 .PHONY: clean_cache
 clean_cache: install_brew
