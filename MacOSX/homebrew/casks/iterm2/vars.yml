@@ -1,5 +1,0 @@
-iterm2_commands:
-  - name: imgcat
-    url: https://raw.github.com/gnachman/iTerm2/master/tests/imgcat
-  - name: imgls
-    url: https://raw.github.com/gnachman/iTerm2/master/tests/imgls
