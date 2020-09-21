@@ -52,7 +52,7 @@ generate_MacOSX_homebrew_casks_vars_yml:
 	@echo '# state: absent | present | upgraded'
 	@echo '# put "casks: []" to do nothing'
 	@echo 'casks:'
-	@for f in `brew cask list`; do echo "  - name: $$f"; echo "    state: upgraded"; done
+	@for f in `brew list --cask`; do echo "  - name: $$f"; echo "    state: upgraded"; done
 
 .PHONY: uninstall
 uninstall: clean_cache clear_formulae
