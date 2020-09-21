@@ -49,7 +49,6 @@ generate_MacOSX_homebrew_formulae_vars_yml:
 
 .PHONY: generate_MacOSX_homebrew_casks_vars_yml
 generate_MacOSX_homebrew_casks_vars_yml:
-	@echo "cask_options: 'appdir=\$$HOME/Applications'"
 	@echo '# state: absent | present | upgraded'
 	@echo '# put "casks: []" to do nothing'
 	@echo 'casks:'
