@@ -26,7 +26,7 @@ casks:
   - name: kindle
     state: upgraded
   - name: openvpn-connect
-    state: absent
+    state: upgraded
   - name: pycharm
     state: upgraded
   - name: sourcetree

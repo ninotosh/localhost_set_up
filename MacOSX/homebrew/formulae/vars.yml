@@ -1,8 +1,6 @@
 # state: absent | present | upgraded
 # put "formulae: []" to do nothing
 formulae:
-  - name: zsh-completion
-    state: upgraded
   - name: docker-completion
     state: upgraded
   - name: ffmpeg
@@ -13,3 +11,5 @@ formulae:
     state: absent
   - name: vagrant-completion
     state: absent
+  - name: zsh-completions
+    state: upgraded
