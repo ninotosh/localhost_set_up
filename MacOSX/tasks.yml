@@ -1,5 +1,6 @@
 - include: "{{MacOSX_dir}}/tasks.yml"
   with_items:
+    - zsh
     - disable_ipv6
     - osx_defaults
     - homebrew

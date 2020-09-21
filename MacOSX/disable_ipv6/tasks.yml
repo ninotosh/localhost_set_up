@@ -1,7 +1,7 @@
 - include_vars: vars.yml
 - name: networksetup -getinfo
   with_items: "{{networks}}"
-  when: networks
+  when: networks|length > 0
   command: networksetup -getinfo "{{item}}"
   register: networksetup_getinfo
   changed_when: False
