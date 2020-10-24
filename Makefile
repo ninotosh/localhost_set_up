@@ -29,15 +29,19 @@ curl_exists:
 install_brew: curl_exists
 	@which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+.PHONY: update_brew
+update_brew: install_brew
+	@brew update
+
 .PHONY: install_ansible
-install_ansible: install_brew
-	@brew list --versions ansible || (brew update && brew install ansible)
+install_ansible: install_brew update_brew
+	@brew list --versions ansible || brew install ansible
 
 .PHONY: run
-run: play uninstall
+run: install play uninstall
 
 .PHONY: play
-play: install
+play:
 	ansible-playbook site.yml
 
 .PHONY: generate_MacOSX_homebrew_formulae_vars_yml
