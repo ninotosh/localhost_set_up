@@ -77,7 +77,7 @@ FORMULAE_VARS := MacOSX/homebrew/formulae/vars.yml
 .PHONY: clear_formulae
 clear_formulae: ruby_exists install_brew
 	@/usr/bin/ruby -ryaml -e 'puts YAML.load_file("$(FORMULAE_VARS)")["formulae"].map{|f| puts f["name"] if ["present", "upgraded"].include?(f["state"])}.compact' > $(TEMP_PRESENT)
-	@brew list | grep -v -f $(TEMP_PRESENT) > $(TEMP_UNINSTALLABLE); true
+	@test -s $(TEMP_PRESENT) && brew list | grep -v -f $(TEMP_PRESENT) > $(TEMP_UNINSTALLABLE); true
 	@for i in `cat $(TEMP_UNINSTALLABLE)`; do \
 		for f in `brew list | grep -v -f $(TEMP_PRESENT)`; do \
 			brew list --versions $$f > /dev/null && brew uninstall $$f 2> /dev/null || true; \
