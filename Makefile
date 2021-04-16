@@ -49,7 +49,7 @@ generate_MacOSX_homebrew_formulae_vars_yml:
 	@echo '# state: absent | present | upgraded'
 	@echo '# put "formulae: []" to do nothing'
 	@echo 'formulae:'
-	@for f in `brew list`; do echo "  - name: $$f"; echo "    state: upgraded"; done
+	@for f in `brew list --formula`; do echo "  - name: $$f"; echo "    state: upgraded"; done
 
 .PHONY: generate_MacOSX_homebrew_casks_vars_yml
 generate_MacOSX_homebrew_casks_vars_yml:
