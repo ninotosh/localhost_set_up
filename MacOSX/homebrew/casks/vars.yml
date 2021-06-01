@@ -39,5 +39,5 @@ casks:
     state: absent
   - name: vlc
     state: absent
-  - name: zoomus
+  - name: zoom
     state: absent
