@@ -6,7 +6,7 @@ casks:
   - name: appcleaner
     state: absent
   - name: atom
-    state: upgraded
+    state: absent
   - name: caffeine
     state: absent
   - name: docker
@@ -16,8 +16,10 @@ casks:
   - name: evernote
     state: upgraded
   - name: google-backup-and-sync
-    state: upgraded
+    state: absent
   - name: google-chrome
+    state: upgraded
+  - name: google-drive
     state: upgraded
   - name: google-japanese-ime
     state: upgraded
@@ -36,7 +38,7 @@ casks:
   - name: virtualbox
     state: absent
   - name: visual-studio-code
-    state: absent
+    state: upgraded
   - name: vlc
     state: absent
   - name: zoom
