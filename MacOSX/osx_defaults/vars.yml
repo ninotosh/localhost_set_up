@@ -1,5 +1,13 @@
 defaults:
   - domain: NSGlobalDomain
+    key: AppleInterfaceStyle
+    type: string
+    value: Dark
+  - domain: NSGlobalDomain
+    key: AppleInterfaceStyleSwitchesAutomatically
+    type: int
+    value: 1
+  - domain: NSGlobalDomain
     key: KeyRepeat
     type: int
     value: 2
@@ -28,6 +36,14 @@ defaults:
     type: float
     value: 3
   - domain: NSGlobalDomain
+    key: com.apple.sound.beep.volume
+    type: float
+    value: 0.0
+  - domain: NSGlobalDomain
+    key: com.apple.sound.uiaudio.enabled
+    type: int
+    value: 0
+  - domain: NSGlobalDomain
     key: AppleEnableMouseSwipeNavigateWithScrolls
     type: bool
     value: yes
@@ -49,20 +65,39 @@ defaults:
     value: 1
   - domain: com.apple.AppleMultitouchTrackpad
     key: Clicking
-    type: bool
-    value: yes
+    type: int
+    value: 1
   - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     key: Clicking
-    type: bool
-    value: yes
+    type: int
+    value: 1
+
   - domain: com.apple.AppleMultitouchTrackpad
     key: TrackpadThreeFingerDrag
     type: bool
     value: yes
+  - domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadThreeFingerHorizSwipeGesture
+    type: int
+    value: 0
+  - domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadThreeFingerVertSwipeGesture
+    type: int
+    value: 0
+
   - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     key: TrackpadThreeFingerDrag
     type: bool
     value: yes
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadThreeFingerHorizSwipeGesture
+    type: int
+    value: 0
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadThreeFingerVertSwipeGesture
+    type: int
+    value: 0
+
   - domain: NSGlobalDomain
     key: com.apple.trackpad.scaling
     type: float
@@ -75,6 +110,10 @@ defaults:
     key: location
     type: string
     value: '~/Downloads'
+  - domain: com.apple.screencapture
+    key: disable-shadow
+    type: bool
+    value: yes
   - domain: com.apple.finder
     key: AppleShowAllFiles
     type: bool
@@ -103,6 +142,10 @@ defaults:
     key: DateFormat
     type: string
     value: 'EEE M d  H:mm'
+  - domain: com.apple.menuextra.clock
+    key: ShowSeconds
+    type: int
+    value: 1
   - domain: com.apple.dock
     key: magnification
     type: bool
@@ -119,3 +162,15 @@ defaults:
     key: show-recents
     type: bool
     value: no
+  - domain: com.apple.controlcenter
+    key: "NSStatusItem Visible Sound"
+    type: int
+    value: 1
+  - domain: com.apple.controlcenter
+    key: "NSStatusItem Visible Item-0" # Spotlight
+    type: int
+    value: 0
+  - domain: com.apple.Spotlight
+    key: "NSStatusItem Visible Item-0"
+    type: int
+    value: 0
