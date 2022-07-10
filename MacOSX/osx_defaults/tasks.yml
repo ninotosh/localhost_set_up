@@ -1,4 +1,8 @@
-- include_vars: vars.yml
-- name: set defaults
-  osx_defaults: domain="{{item.domain}}" key="{{item.key}}" type="{{item.type}}" value="{{item.value}}"
-  with_items: "{{defaults}}"
+- name: defaults
+  tags:
+    - defaults
+  block:
+    - include_vars: vars.yml
+    - name: defaults write
+      osx_defaults: domain="{{item.domain}}" key="{{item.key}}" type="{{item.type}}" value="{{item.value}}"
+      with_items: "{{defaults}}"

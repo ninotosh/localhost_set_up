@@ -40,9 +40,10 @@ install_ansible: install_brew update_brew
 .PHONY: run
 run: install play uninstall
 
+TAGS=all
 .PHONY: play
 play:
-	ansible-playbook site.yml
+	ansible-playbook --tags $(TAGS) site.yml
 
 .PHONY: generate_MacOSX_homebrew_formulae_vars_yml
 generate_MacOSX_homebrew_formulae_vars_yml:
