@@ -15,8 +15,6 @@ casks:
     state: upgraded
   - name: evernote
     state: upgraded
-  - name: google-backup-and-sync
-    state: absent
   - name: google-chrome
     state: upgraded
   - name: google-drive
