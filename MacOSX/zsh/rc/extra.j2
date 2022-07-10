@@ -1,18 +1,12 @@
 PROMPT='%1~%# '
 alias ll='ls -Fal'
 
+# https://formulae.brew.sh/formula/zsh-completions
 if type brew &>/dev/null; then
-  brew_prefix_share=$(brew --prefix)/share
-  if [ -d ${brew_prefix_share}/zsh-completions ]; then
-    FPATH=${brew_prefix_share}/zsh-completions:$FPATH
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-    chmod go-w ${brew_prefix_share}
-    [ -d ${brew_prefix_share}/zsh ] && \
-      chmod go-w ${brew_prefix_share}/zsh
-    [ -d ${brew_prefix_share}/zsh/site-functions ] && \
-      chmod go-w ${brew_prefix_share}/zsh/site-functions
+  autoload -Uz compinit
+  compinit
 
-    autoload -Uz compinit
-    compinit
-  fi
+  [ -d "$(brew --prefix)/share/zsh" ] && chmod -R go-w "$(brew --prefix)/share/zsh"
 fi
